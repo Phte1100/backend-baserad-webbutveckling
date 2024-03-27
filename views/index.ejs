@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment1</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Kurser</h1>
+        <nav>
+            <ul class="navlinks">
+                <li><a href="/" class="current">Startsidan</a></li>
+                <li><a href="/addcourses">Lägg till kurser</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="formStyle">
+
+    <div id="courseDetails">
+        <div>
+        <% if (courseList && courseList.length > 0) { %>
+            <% courseList.forEach(function(course) { %>
+                
+                    <ul class="list">
+                    <li>Kurs: <%= course.Kurs %></li>
+                    <li>Kurskod: <%= course.Kurskod %></li>
+                    <li>Hemsida: <a href="<%= course.Hemsida %>"><%= course.Hemsida %></a></li>
+                    <li>Progression: <%= course.Progression %></li>
+                    </ul>
+                    <button id="uppdate" type="button" class="btn">Uppdatera kurs</button>
+                    <button id="clearbutton" type="button" class="btn">Ta bort ur listan</button>
+            <% }) %>
+        <% } else { %>
+            <p>Inga kurser har lagts till än.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

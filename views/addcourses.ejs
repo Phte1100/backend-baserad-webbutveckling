@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment1</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Lägg till kurser</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Startsidan</a></li>
+                <li><a href="/members" class="current">Lägg till kurser</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="formStyle">
+    <form id="courseForm" method="post" action="/addcourses">
+        <% if (error !== "") { %>
+            <p><%= error %></p>
+        <% } %>
+        <label for="name">Kursnamn:</label><br>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="text">Kurskod:</label><br>
+        <input type="text" id="code" name="code" required>
+        <br>
+        <label for="url">Hemsida:</label><br>
+        <input type="url" id="url" name="url" required>
+        <br>
+        <label for="progression">Progression:</label><br>
+        <select name="progression" id="progression" name="progression" required>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        <br>
+        <button id="createbutton" type="submit">Lägg till kurs</button>
+        <br>
+        <br>
+        <button id="clearbutton" type="button" class="btn">Rensa</button>
+    </form>
+    
+    <div id="courseDetails"></div>
+</div>
+</body>
+</html>
