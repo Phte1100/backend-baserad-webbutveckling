@@ -14,7 +14,7 @@ connection.connect((err) => {
     }
 
     console.log("Connected to MySQL");
-})
+});
 
 connection.query("DROP TABLE IF EXISTS kurser;", (err, results) => {
     if (err) throw err;

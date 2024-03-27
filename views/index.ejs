@@ -22,24 +22,23 @@
     </header>
     <div id="formStyle">
 
-    <div id="courseDetails">
-        <div>
-        <% if (courseList && courseList.length > 0) { %>
-            <% courseList.forEach(function(course) { %>
-                
+        <div id="courseDetails">
+            <div>
+                <h2>Kurser</h2>
+            <% if (rows && rows.length > 0) { %>
+                <% rows.forEach((course) => { %>
                     <ul class="list">
-                    <li>Kurs: <%= course.Kurs %></li>
-                    <li>Kurskod: <%= course.Kurskod %></li>
-                    <li>Hemsida: <a href="<%= course.Hemsida %>"><%= course.Hemsida %></a></li>
-                    <li>Progression: <%= course.Progression %></li>
+                        <li>Kurs: <%= course.courseName %></li>
+                        <li>Kurskod: <%= course.courseCode %></li>
+                        <li>Hemsida: <a href="<%= course.courseUrl %>"><%= course.courseUrl %></a></li>
+                        <li>Progression: <%= course.courseProgression %></li>
                     </ul>
-                    <button id="uppdate" type="button" class="btn">Uppdatera kurs</button>
                     <button id="clearbutton" type="button" class="btn">Ta bort ur listan</button>
-            <% }) %>
-        <% } else { %>
-            <p>Inga kurser har lagts till än.</p>
-        <% } %>
-    </div>
+                    <% }) %>
+                    <% } else { %>
+                        <p>Inga kurser har lagts till än.</p>
+                    <% } %>
+                </div></div>
 </div>
 </body>
 </html>
