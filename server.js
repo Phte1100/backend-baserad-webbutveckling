@@ -7,6 +7,9 @@ app.set("view engine", "ejs"); //view engine: EJS
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+// .env
+require('dotenv').config({path: './.env'});
+
 const courseList = [];
 
 // route
@@ -75,10 +78,10 @@ app.listen(port, () => {
 // Ansluter till MySQL-databasen
 const mysql = require("mysql");
 const connection = mysql.createConnection({
-    host: "tommy2.heliohost.org",
-    user: "phte1100_user",
-    password: "PT7950pt",
-    database: "phte1100_kurser"
+    host: process.env.HOST,
+    user: process.env.USER_ACC,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 connection.connect((err) => {
