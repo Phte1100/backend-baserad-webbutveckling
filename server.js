@@ -75,10 +75,10 @@ app.listen(port, () => {
 // Ansluter till MySQL-databasen
 const mysql = require("mysql");
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "mysqltest1",
-    password: "password",
-    database: "mysqltest1"
+    host: "tommy2.heliohost.org",
+    user: "phte1100_user",
+    password: "PT7950pt",
+    database: "phte1100_kurser"
 });
 
 connection.connect((err) => {
