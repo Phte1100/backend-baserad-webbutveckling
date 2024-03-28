@@ -20,6 +20,19 @@ app.get("/", (req, res) => {
     });
 });
 
+app.delete('/delete-course/:id', (req, res) => {
+    const courseId = req.params.id;
+    connection.query('DELETE FROM kurser WHERE id = ?', [courseId], (error, results) => {
+        if (error) {
+            console.error('Fel vid borttagning av kurs: ', error);
+            res.json({ success: false });
+        } else {
+            console.log('Kurs raderad: ', results);
+            res.json({ success: true });
+        }
+    });
+});
+
 
 app.get ("/addcourses", (req, res) => {
     res.render("addcourses", { error: "" });
@@ -30,6 +43,7 @@ app.get ("/about", (req, res) => {
 });
 console.log("skituppgift");
 
+// Hanterar POST-begäranden för att lägga till nya kurser till databasen.
 app.post("/addcourses", (req, res) => {
     // Läs in formulärdata
     let newName = req.body.name;
@@ -38,6 +52,7 @@ app.post("/addcourses", (req, res) => {
     let newProgression = req.body.progression;
     let error = "";
 
+    // Kontrollerar att alla fält är ifyllda innan kursen läggs till i databasen.
     if (newName && newCode && newUrl && newProgression) {
         // Lägg till i databasen om alla fält är ifyllda
         connection.query("INSERT INTO kurser (courseName, courseCode, courseUrl, courseProgression) VALUES (?, ?, ?, ?)",
@@ -55,13 +70,13 @@ app.post("/addcourses", (req, res) => {
     }
 });
 
-// starta
+// Startar servern på angiven port.
 app.listen(port, () => {
     console.log("Serverstarted on port" + port);
 });
 
+// Ansluter till MySQL-databasen
 const mysql = require("mysql");
-
 const connection = mysql.createConnection({
     host: "localhost",
     user: "mysqltest1",

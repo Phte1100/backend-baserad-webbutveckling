@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script src="/js/main.js"></script>
 </head>
 <body>
     <header>
@@ -33,7 +34,7 @@
                         <li>Hemsida: <a href="<%= course.courseUrl %>"><%= course.courseUrl %></a></li>
                         <li>Progression: <%= course.courseProgression %></li>
                     </ul>
-                    <button id="clearbutton" type="button" class="btn">Ta bort ur listan</button>
+                    <button id="clearbutton" type="button" class="btn" data-courseid="<%= course.id %>">Ta bort ur listan</button>
                     <% }) %>
                     <% } else { %>
                         <p>Inga kurser har lagts till än.</p>
