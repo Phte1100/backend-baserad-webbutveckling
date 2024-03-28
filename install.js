@@ -1,11 +1,14 @@
+// .env
+require('dotenv').config({path: './.env'});
+
 const mysql = require("mysql");
 
 // Skapar en anslutning till databasen med specificerade inloggningsuppgifter och databasnamn
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "mysqltest1",
-    password: "password",
-    database: "mysqltest1"
+    host: process.env.HOST,
+    user: process.env.USER_ACC,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 // Ansluter till MySQL-databasen
