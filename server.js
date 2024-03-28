@@ -41,7 +41,6 @@ app.get ("/addcourses", (req, res) => {
 app.get ("/about", (req, res) => {
     res.render("about");
 });
-console.log("skituppgift");
 
 // Hanterar POST-begäranden för att lägga till nya kurser till databasen.
 app.post("/addcourses", (req, res) => {
@@ -58,7 +57,6 @@ app.post("/addcourses", (req, res) => {
         connection.query("INSERT INTO kurser (courseName, courseCode, courseUrl, courseProgression) VALUES (?, ?, ?, ?)",
             [newName, newCode, newUrl, newProgression], (error, results) => {
                 if (error) throw error;
-                console.log("Course inserted", results);
             });
         // Omdirigera till huvudsidan efter att ha lagt till kursen
         res.redirect("/");
@@ -72,7 +70,6 @@ app.post("/addcourses", (req, res) => {
 
 // Startar servern på angiven port.
 app.listen(port, () => {
-    console.log("Serverstarted on port" + port);
 });
 
 // Ansluter till MySQL-databasen
